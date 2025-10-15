@@ -37,13 +37,14 @@ Rustを学ぶ上で最も重要だと感じた,言語の根幹をなす理念.
 ### 3. cargo runの実行
 1. ターミナルを開く.
    作業レポジトリに移動し,cargo runを実行する.
+   ```rust
    cd ~/projects/hello_rust
    cargo run
+   ```
    結果として成功すれば「Hello, world!」が表示されるはず.
 
 ---
 
-``
 ## 3. FizzBuzz問題を通した基本構文の学習
 
 Rustを理解するための例題として、古典的な「FizzBuzz問題」を扱う.この課題を通して,Rustの基本的な制御構文である **forループ** と **if文** を学ぶ.ファイルはalgorithms_practiceに入っている.
@@ -66,6 +67,7 @@ fn main() {
         }
     } 
 }
+```
 
 ### 1. 関数の定義 (fn main() {})
    fn は function の略で,関数を定義するキーワード.
