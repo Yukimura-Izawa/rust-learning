@@ -1,0 +1,12 @@
+C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\deps\serde-d5270aa3a10ef328.d: C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\build\serde-5308fca88ef0f50f\out/private.rs
+
+C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\deps\libserde-d5270aa3a10ef328.rmeta: C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\build\serde-5308fca88ef0f50f\out/private.rs
+
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs:
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs:
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs:
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs:
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs:
+C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\build\serde-5308fca88ef0f50f\out/private.rs:
+
+# env-dep:OUT_DIR=C:\\Users\\1123i\\projects\\rust-learning\\web_scraper\\target\\debug\\build\\serde-5308fca88ef0f50f\\out

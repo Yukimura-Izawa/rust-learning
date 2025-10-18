@@ -1,0 +1,14 @@
+C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\deps\thiserror-57cfa97e98f9cb4c.d: C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\lib.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\aserror.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\display.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\var.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\private.rs C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\build\thiserror-13197be51d99b4de\out/private.rs
+
+C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\deps\libthiserror-57cfa97e98f9cb4c.rlib: C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\lib.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\aserror.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\display.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\var.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\private.rs C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\build\thiserror-13197be51d99b4de\out/private.rs
+
+C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\deps\libthiserror-57cfa97e98f9cb4c.rmeta: C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\lib.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\aserror.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\display.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\var.rs C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\private.rs C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\build\thiserror-13197be51d99b4de\out/private.rs
+
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\lib.rs:
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\aserror.rs:
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\display.rs:
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\var.rs:
+C:\Users\1123i\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-2.0.17\src\private.rs:
+C:\Users\1123i\projects\rust-learning\web_scraper\target\debug\build\thiserror-13197be51d99b4de\out/private.rs:
+
+# env-dep:OUT_DIR=C:\\Users\\1123i\\projects\\rust-learning\\web_scraper\\target\\debug\\build\\thiserror-13197be51d99b4de\\out
