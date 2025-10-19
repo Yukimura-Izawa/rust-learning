@@ -91,3 +91,114 @@ fn main() {
    末尾の ! はこれが通常の関数ではなく「マクロ」であることを示している.
    {} はプレースホルダと呼ばれ,後続の引数の値に置き換えられて表示される.
    補足: マクロを使うことで,println!("{}", a) や println!("{} {}", a, b) のように引数の数を柔軟に変えることができる.
+   
+---
+
+## 4. web scrapingの学習まとめ
+Rust言語の学習の一環として特定のウェブサイトから情報を自動で取得するweb scraping(ウェブスクレイピング)について学んだことのまとめ.
+
+### 1. プロジェクトの方針（心）
+このプログラムの基本的な考え方は「人間がブラウザを操作する手順をそのままプログラムに真似させる」こと.
+実際にサイト内に訪問し,調べたい言葉を検索し,そこをクリックして中に入るようにする.その後情報を取得することを目指す.
+
+### 2. 準備
+1. `Cargo.toml` に以下のライブラリを追加
+   * `thirtyfour`: ブラウザ(Chromeなど)を自動操作するためのメインライブラリ
+   * `tokio`: Rustで非同期処理(`async/await`)を行うための定番ライブラリ
+   具体的な操作 : ターミナルでプロジェクトフォルダ(ここでは`web_scraper`)に移動した状態で以下2つを実行.
+   ```rust
+   cargo add thirtyfour
+   cargo add tokio --features full
+   ```
+2. ChromeDriver (Googleの拡張ツール)の追加
+   thirtyfourライブラリがChromeブラウザを操作するためのdriver役としてChromeDriverが必要.
+   - [Chrome for Testing availability](https://googlechromelabs.github.io/chrome-for-testing/)からバージョンに合った chromedriver (例: chromedriver-win64.zip) をダウンロードする.
+   - ZIPを解凍し,chromedriver.exe をプロジェクトフォルダに移す.
+   - ターミナルでプロジェクトに移動し,`.\chromedriver.exe`を実行.
+   コマンドを実行すると,ターミナルに以下のようなメッセージが表示され,カーソルが点滅したまま待機状態になる.
+   ```rust
+   Starting ChromeDriver 141.0.7390.78 (....) on port 0
+   ...
+   ChromeDriver was started successfully on port 54369.
+   ```
+   この状態になれば起動成功で,このターミナルは cargo run が終わるまで閉じない.(ポート番号は毎回変わる可能性がある)
+   (※今の操作自体をrustのコードに入れることも可能だが,ここではそれはしていない.)
+   - chromedriver.exe などは 100MB 以上ある巨大なファイル.これを GitHub にアップロードしないように,Gitに伝える必要がある.
+   プロジェクトフォルダに .gitignore というファイルを作り、以下を記述する.
+   ```rust
+   /target
+   Cargo.lock  
+   chromedriver.exe  
+   ```
+
+### 3. FASE 1 : 言葉を検索し,そこをクリックする
+ここでは言葉を検索し,そこをクリックするところまで実装する.
+このプログラムは,大きく分けて3つのステップで構成される.
+1. 道具の準備 (use ...): thirtyfour や tokio といったブラウザ操作や非同期処理に必要な道具(ライブラリ)を読み込む.
+
+2. 自作ツールの定義 (async fn find_and_click_by_text): 「キーワードで要素を探してクリックする」という、よく使う操作を「自作ツール（関数）」としてまとめて定義しておく.
+
+3. メイン処理の実行 (async fn main): ブラウザ起動 → サイトを開く → 待機 → 自作ツールで"建設"を調べクリックする → 同様に新しく開いたサイト内で自作ツールで"道路"を調べクリックする → ブラウザを閉じる. この流れを実行する.
+```rust
+// --- 道具の準備 ---
+use thirtyfour::prelude::*;
+use tokio;
+
+// --- 関数定義 ---
+async fn find_and_click_by_text(driver: &WebDriver, keyword: &str) -> WebDriverResult<()> {
+    // ターミナルに進捗を表示
+    println!("「{}」というキーワードで *あらゆる要素* を探しています...", keyword);
+
+    // [ポイント1] XPathを使って要素を検索
+    // "//*[contains(text(), 'キーワード')]" という強力な探し方
+    // これにより,<a>タグだけでなく<span>や<div>タグなども対象にできる
+    let xpath_selector = format!("//*[contains(text(), '{}')]", keyword);
+    
+    // .find() で要素を実際に探しに行く (見つかるまで .await で待つ)
+    let element = driver.find(By::XPath(&xpath_selector)).await?;
+
+    // 見つけた要素をクリックする
+    element.click().await?;
+    println!("「{}」をクリックしました。", keyword);
+    
+    // [ポイント2] ページ遷移を待つための「スリープ」
+    // クリック直後はページが読み込み中のため, 2秒間待機する
+    tokio::time::sleep(std::time::Duration::from_secs(2)).await;
+
+    Ok(())
+}
+
+
+// --- メインの処理 ---
+#[tokio::main]
+async fn main() -> WebDriverResult<()> {
+    // [ポイント3] ChromeDriverへの接続
+    // ポート番号は、chromedriver.exe起動時に表示されたものに合わせる
+    let caps = DesiredCapabilities::chrome();
+    let driver = WebDriver::new("http://localhost:49255", caps).await?; // ポート番号は要確認
+
+    // サイトを開く(足立区の例規集)
+    driver.get("https://ops-jg.d1-law.com/opensearch/SrMjF01/init?jctcd=8A8016811F").await?;
+    println!("サイトを開きました。");
+    
+
+    // [ポイント4] JavaScriptの読み込み待機 (最重要)
+    // このサイトはJavaScriptで動的にリンクを生成する(SPA)。
+    // そのため、リンクが表示されるまで5秒間待機する。
+    // (iframeの罠を回避した結果、この待機が成功の鍵となった)
+    println!("メインページのJavaScriptが読み込まれるのを5秒待ちます...");
+    tokio::time::sleep(std::time::Duration::from_secs(5)).await;
+    
+    // メインページを直接探す
+    // 上で定義した自作ツール（関数）を呼び出す
+    find_and_click_by_text(&driver, "建設").await?;
+    find_and_click_by_text(&driver, "道路").await?;
+    
+
+    // ブラウザを閉じる
+    driver.quit().await?;
+    println!("ブラウザを閉じました。");
+
+    Ok(())
+}
+```
